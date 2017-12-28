@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import fi.jyu.mit.fxgui.StringGrid?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane prefHeight="200.0" prefWidth="360.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fxResurssit.OmatTiedotController"> 
+   <top>
+      <BorderPane BorderPane.alignment="CENTER">
+         <BorderPane.margin>
+            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+         </BorderPane.margin>
+         <top>
+            <BorderPane BorderPane.alignment="CENTER">
+               <center>
+                  <ScrollPane fx:id="panelJasen" fitToWidth="true" pannable="true" BorderPane.alignment="CENTER">
+                     <content>
+                        <GridPane fx:id="gridJasen" hgap="5.0" vgap="5.0">
+                           <columnConstraints>
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                              <ColumnConstraints />
+                           </columnConstraints>
+                           <rowConstraints>
+                              <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                              <RowConstraints />
+                              <RowConstraints />
+                              <RowConstraints />
+                              <RowConstraints />
+                           </rowConstraints>
+                           <children>
+                              <Label prefWidth="100.0" text="Nimi" />
+                              <Label prefWidth="100.0" text="Katuosoite" GridPane.rowIndex="1" />
+                              <Label prefWidth="100.0" text="Postiosoite" GridPane.rowIndex="2" />
+                              <Label prefWidth="100.0" text="Puhelin" GridPane.rowIndex="3" />
+                              <Label prefWidth="100.0" text="Sähköposti" GridPane.rowIndex="4" />
+                              <TextField fx:id="editNimi" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS" />
+                              <TextField fx:id="editKatuOsoite" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" />
+                              <TextField fx:id="editPostiOsoite" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS" GridPane.rowIndex="2" />
+                              <TextField fx:id="editPuhelin" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS" GridPane.rowIndex="3" />
+                              <TextField fx:id="editSapo" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS" GridPane.rowIndex="4" />
+                           </children>
+                        </GridPane>
+                     </content>
+                  </ScrollPane>
+               </center>
+               <top>
+                  <Label text="Yhteystiedot" BorderPane.alignment="CENTER_LEFT">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                     <BorderPane.margin>
+                        <Insets bottom="5.0" right="5.0" top="5.0" />
+                     </BorderPane.margin>
+                  </Label>
+               </top>
+               <bottom>
+                  <Label fx:id="labelVirhe" BorderPane.alignment="CENTER" />
+               </bottom>
+            </BorderPane>
+         </top>
+         <bottom>
+            <HBox alignment="TOP_RIGHT" BorderPane.alignment="CENTER">
+               <children>
+                  <Button mnemonicParsing="false" onAction="#handleTallenna" text="Tallenna" />
+                  <Button mnemonicParsing="false" onAction="#handlePeruuta" text="Peruuta">
+                     <HBox.margin>
+                        <Insets left="10.0" right="10.0" />
+                     </HBox.margin>
+                  </Button>
+               </children>
+            </HBox>
+         </bottom>
+      </BorderPane>
+   </top>
+   <bottom>
+      <BorderPane BorderPane.alignment="CENTER">
+         <top>
+            <Label text="Työkalut" BorderPane.alignment="CENTER_LEFT">
+               <BorderPane.margin>
+                  <Insets bottom="10.0" left="5.0" right="5.0" />
+               </BorderPane.margin>
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+         </top>
+         <bottom>
+            <HBox BorderPane.alignment="CENTER">
+               <children>
+                  <Button mnemonicParsing="false" onAction="#handleLisaa" text="Lisää">
+                     <HBox.margin>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                     </HBox.margin>
+                  </Button>
+                  <Button mnemonicParsing="false" onAction="#handlePoista" text="Poista">
+                     <HBox.margin>
+                        <Insets bottom="10.0" right="10.0" top="10.0" />
+                     </HBox.margin>
+                  </Button>
+                  <BorderPane HBox.hgrow="ALWAYS">
+                     <HBox.margin>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                     </HBox.margin>
+                     <right>
+                        <HBox BorderPane.alignment="CENTER">
+                           <children>
+                              <Button alignment="CENTER_RIGHT" disable="true" mnemonicParsing="false" onAction="#handleTallenna" text="Tallenna">
+                                 <HBox.margin>
+                                    <Insets right="5.0" />
+                                 </HBox.margin>
+                              </Button>
+                              <Button alignment="CENTER_RIGHT" disable="true" mnemonicParsing="false" onAction="#handlePeruuta" text="Peruuta">
+                                 <HBox.margin>
+                                    <Insets left="5.0" />
+                                 </HBox.margin>
+                              </Button>
+                           </children>
+                        </HBox>
+                     </right>
+                  </BorderPane>
+               </children>
+            </HBox>
+         </bottom>
+         <center>
+            <ScrollPane fx:id="panelTyokalu" fitToWidth="true" prefHeight="150.0" BorderPane.alignment="CENTER">
+              <content>
+                  <StringGrid fx:id="tableTyokalut" editable="true" rivit="Työkalu | Lisätiedot&#10;vasara | &#10;ruuvimeisseli | pieni tähtipää&#10;ruuvimeissei | 8,5 mm talttapää" />
+              </content>
+            </ScrollPane>
+         </center>
+         <BorderPane.margin>
+            <Insets left="10.0" right="10.0" />
+         </BorderPane.margin>
+      </BorderPane>
+   </bottom>
+</BorderPane>
